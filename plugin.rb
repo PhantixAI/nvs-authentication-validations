@@ -33,4 +33,23 @@ after_initialize do
     )
     columns
   end
+
+  register_modifier(:user_field_required_for_signup) do |required, field, submitted_user_fields|
+    DiscourseAuthenticationValidations::RequiredFieldCheck.call(
+      required,
+      field,
+      submitted_user_fields,
+    )
+  end
+
+  register_modifier(
+    :user_field_required_for_update,
+  ) do |required, field, submitted_user_fields, user|
+    DiscourseAuthenticationValidations::RequiredFieldCheck.call(
+      required,
+      field,
+      submitted_user_fields,
+      user,
+    )
+  end
 end
