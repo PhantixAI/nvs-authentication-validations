@@ -30,7 +30,10 @@ RSpec.describe "Discourse Authentication Validation - Value Validation Regex - U
     )
   end
 
-  before { SiteSetting.discourse_authentication_validations_enabled = true }
+  before do
+    SiteSetting.discourse_authentication_validations_enabled = true
+    SiteSetting.enable_local_logins_via_code = false
+  end
 
   context "when a user field has a value_validation_regex" do
     it "displays a validation error message when the target user field input is incorrect" do

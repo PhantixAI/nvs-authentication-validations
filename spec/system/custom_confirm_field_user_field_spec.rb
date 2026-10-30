@@ -96,6 +96,7 @@ RSpec.describe "Discourse Authentication Validation - Custom User Field - Confir
 
   before do
     SiteSetting.discourse_authentication_validations_enabled = true
+    SiteSetting.enable_local_logins_via_code = false
     visit("/signup")
   end
 
